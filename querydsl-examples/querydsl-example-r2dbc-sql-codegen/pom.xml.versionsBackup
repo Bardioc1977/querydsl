@@ -5,15 +5,15 @@
   <parent>
     <groupId>io.github.openfeign.querydsl</groupId>
     <artifactId>querydsl-examples</artifactId>
-    <version>7.0-rand1</version>
+    <version>6.2-SNAPSHOT</version>
   </parent>
 
-  <artifactId>querydsl-example-sql-spring</artifactId>
-  <name>Querydsl example - SQL Spring</name>
+  <artifactId>querydsl-example-r2dbc-sql-codegen</artifactId>
+  <name>Querydsl example - R2DBC SQL Codegen</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring.version>6.1.5</spring.version>
+    <spring.version>6.1.4</spring.version>
 
     <!-- to match spring JDK version -->
     <main.java.version>17</main.java.version>
@@ -34,9 +34,9 @@
       <version>${spring.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>${spring.version}</version>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-r2dbc</artifactId>
+      <version>3.2.3</version>
     </dependency>
 
     <dependency>
@@ -49,18 +49,18 @@
     <!-- persistence -->
     <dependency>
       <groupId>io.github.openfeign.querydsl</groupId>
-      <artifactId>querydsl-sql</artifactId>
+      <artifactId>querydsl-r2dbc</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.github.openfeign.querydsl</groupId>
-      <artifactId>querydsl-sql-spring</artifactId>
-      <version>${project.version}</version>
+      <groupId>io.r2dbc</groupId>
+      <artifactId>r2dbc-h2</artifactId>
+      <version>${r2dbc.version}</version>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <scope>runtime</scope>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.jolbox</groupId>
@@ -80,10 +80,15 @@
       <version>${spring.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-test</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
-    <finalName>querydsl-example-sql-spring</finalName>
+    <finalName>querydsl-example-r2dbc-spring</finalName>
     <plugins>
       <plugin>
         <groupId>io.github.openfeign.querydsl</groupId>
@@ -91,13 +96,13 @@
         <version>${project.version}</version>
         <configuration>
           <jdbcDriver>org.h2.Driver</jdbcDriver>
-          <jdbcUrl>jdbc:h2:mem:;INIT=runscript from 'file:${project.baseUri}/src/main/sql/001_schema.sql'</jdbcUrl>
+          <jdbcUrl>jdbc:h2:mem:testdb;INIT=runscript from 'file:${project.baseUri}/src/main/sql/001_schema.sql'</jdbcUrl>
           <jdbcUser>sa</jdbcUser>
           <customTypes>
             <customType>com.querydsl.sql.types.LocalDateTimeType</customType>
             <customType>com.querydsl.sql.types.LocalDateType</customType>
           </customTypes>
-          <packageName>com.querydsl.example.sql</packageName>
+          <packageName>com.querydsl.example.r2dbc</packageName>
           <targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
         </configuration>
         <dependencies>

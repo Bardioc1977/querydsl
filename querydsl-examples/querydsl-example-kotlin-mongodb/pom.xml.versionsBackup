@@ -4,20 +4,42 @@
   <parent>
     <groupId>io.github.openfeign.querydsl</groupId>
     <artifactId>querydsl-examples</artifactId>
-    <version>7.0-rand1</version>
+    <version>6.2-SNAPSHOT</version>
   </parent>
-  <artifactId>querydsl-example-kotlin</artifactId>
-  <name>Querydsl example - Kotlin JPA</name>
+  <artifactId>querydsl-example-kotlin-mongodb</artifactId>
+  <name>Querydsl example - Kotlin MongoDB</name>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>${springboot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
-      <groupId>jakarta.persistence</groupId>
-      <artifactId>jakarta.persistence-api</artifactId>
-      <scope>provided</scope>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>io.github.openfeign.querydsl</groupId>
-      <artifactId>querydsl-jpa</artifactId>
+      <artifactId>querydsl-mongodb</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
@@ -40,17 +62,16 @@
         <artifactId>kotlin-maven-plugin</artifactId>
         <version>${kotlin.version}</version>
         <configuration>
-          <compilerPlugins>
-            <plugin>jpa</plugin>
-          </compilerPlugins>
           <annotationProcessorPaths>
             <annotationProcessorPath>
               <groupId>io.github.openfeign.querydsl</groupId>
               <artifactId>querydsl-apt</artifactId>
               <version>${project.version}</version>
-              <classifier>jpa</classifier>
             </annotationProcessorPath>
           </annotationProcessorPaths>
+          <annotationProcessors>
+            <annotationProcessor>org.springframework.data.mongodb.repository.support.MongoAnnotationProcessor</annotationProcessor>
+          </annotationProcessors>
           <jvmTarget>${main.java.version}</jvmTarget>
         </configuration>
         <dependencies>
@@ -100,7 +121,6 @@
               <sourceDirs>
                 <sourceDir>src/test/kotlin</sourceDir>
                 <sourceDir>src/test/java</sourceDir>
-                <sourceDir>target/generated-sources/kapt/test</sourceDir>
               </sourceDirs>
             </configuration>
           </execution>
@@ -118,6 +138,10 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
     <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>

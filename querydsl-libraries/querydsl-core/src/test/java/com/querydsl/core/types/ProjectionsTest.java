@@ -19,7 +19,7 @@ import com.querydsl.core.types.QBeanPropertyTest.Entity;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.core.types.dsl.StringPath;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ProjectionsTest {
 

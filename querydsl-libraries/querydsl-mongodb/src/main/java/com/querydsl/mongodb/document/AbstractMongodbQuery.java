@@ -16,20 +16,9 @@
 package com.querydsl.mongodb.document;
 
 import com.mongodb.ReadPreference;
-import com.querydsl.core.DefaultQueryMetadata;
-import com.querydsl.core.JoinExpression;
-import com.querydsl.core.QueryMetadata;
-import com.querydsl.core.QueryModifiers;
-import com.querydsl.core.SimpleQuery;
+import com.querydsl.core.*;
 import com.querydsl.core.support.QueryMixin;
-import com.querydsl.core.types.Expression;
-import com.querydsl.core.types.ExpressionUtils;
-import com.querydsl.core.types.FactoryExpression;
-import com.querydsl.core.types.Operation;
-import com.querydsl.core.types.OrderSpecifier;
-import com.querydsl.core.types.ParamExpression;
-import com.querydsl.core.types.Path;
-import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.*;
 import com.querydsl.core.types.dsl.CollectionPathBase;
 import java.util.Collection;
 import java.util.HashMap;

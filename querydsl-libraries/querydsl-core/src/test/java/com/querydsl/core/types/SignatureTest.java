@@ -24,14 +24,14 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class SignatureTest {
 
   private List<Class<?>> classes = new ArrayList<Class<?>>();
 
-  @Before
+  @BeforeEach
   public void setUp() throws ClassNotFoundException {
     for (String folder : Collections.singletonList("com/querydsl/core/types/dsl")) {
       for (String file : new File("src/main/java", folder).list()) {

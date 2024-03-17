@@ -3,10 +3,10 @@ package com.querydsl.core.support;
 import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.PathMetadataFactory;
 import com.querydsl.core.types.dsl.EntityPathBase;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-@Ignore
+@Disabled
 public class QueryMixinPerformanceTest {
 
   public static final int iterations = 2000000;

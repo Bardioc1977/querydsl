@@ -18,8 +18,8 @@ import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.Param;
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("unchecked")
 public class ValidatingVisitorTest {
@@ -28,7 +28,7 @@ public class ValidatingVisitorTest {
 
   private final ValidatingVisitor validator = ValidatingVisitor.DEFAULT;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     known.add(ExpressionUtils.path(Object.class, "path"));
   }

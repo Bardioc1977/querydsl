@@ -13,6 +13,9 @@
  */
 package com.querydsl.core;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsEmptyCollection.empty;
+
 import com.querydsl.core.support.QueryBase;
 import com.querydsl.core.types.CollectionExpression;
 import com.querydsl.core.types.Expression;
@@ -23,7 +26,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import org.junit.Assert;
 
 /**
  * The Class StandardTest.
@@ -202,7 +204,8 @@ public abstract class ReactiveQueryExecution {
       for (String e : errors) {
         buffer.append(e + "\n");
       }
-      Assert.fail(buffer.toString());
+
+      assertThat(failures, empty());
     } else {
       System.out.println("Success with " + total + " tests");
     }

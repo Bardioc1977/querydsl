@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.openfeign.querydsl</groupId>
     <artifactId>querydsl-tooling</artifactId>
-    <version>6.2-SNAPSHOT</version>
+    <version>7.0-rand1</version>
   </parent>
   <artifactId>codegen-utils</artifactId>
 
@@ -28,13 +28,6 @@
       <groupId>io.github.classgraph</groupId>
       <artifactId>classgraph</artifactId>
       <scope>compile</scope>
-    </dependency>
-
-    <!-- test -->
-    <dependency>
-      <groupId>org.junit.vintage</groupId>
-      <artifactId>junit-vintage-engine</artifactId>
-      <scope>test</scope>
     </dependency>
 
     <dependency>

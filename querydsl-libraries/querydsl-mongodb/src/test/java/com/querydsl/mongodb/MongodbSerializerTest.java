@@ -21,7 +21,6 @@ import com.mongodb.DBObject;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.*;
-import com.querydsl.mongodb.domain.*;
 import com.querydsl.mongodb.morphia.MorphiaSerializer;
 import java.sql.Timestamp;
 import java.util.ArrayList;
